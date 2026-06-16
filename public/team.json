@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Taha Moazzam",
+    "designation": "Founder & COO @InteractionPVTLTD",
+    "about": "Moving Machine Learning from local instances to global impact.",
+    "photo": "/team/tahamozzam.png",
+    "links": {
+      "github": "aecotyle.github.com"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Hurman Ejaz",
+    "designation": "Co-Founder",
+    "about": "I build things that move. The cursor. The screen. The person watching. Motion isn't decoration — it's the message.",
+    "photo": "/team/hurmanejaz.png ",
+    "links": {
+      "website": "https://project-ignition-two.vercel.app/"
+    }
+  },
+  {
+    "id": 3,
+    "name": "Esfandeyar Qureshi",
+    "designation": "CTO, CO-FOUNDER",
+    "about": "I architect the chaos. The spark. The flame. The wildfire. A brand isn't just a logo — it's an undeniable force.",
+    "photo": "/team/defey.png",
+    "links": {
+      "website": "esfyq.vercel.app"
+    }
+  },
+  {
+    "id": 4,
+    "name": "Ali Sarfraz",
+    "designation": "CIO & Co-Founder",
+    "about": "",
+    "photo": "/team/alisarfaraz.png",
+    "links": {
+      "linkedin": "https://www.linkedin.com/in/ali-sarfraz-190961351/"
+    }
+  }
+]
