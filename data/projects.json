@@ -1,0 +1,30 @@
+[
+  {
+    "id": "p1",
+    "title": "Astra Logistics",
+    "category": "AI Automation",
+    "image": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2670&auto=format&fit=crop",
+    "link": "#"
+  },
+  {
+    "id": "p2",
+    "title": "Nebula FinTech",
+    "category": "Fraud Detection System",
+    "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop",
+    "link": "#"
+  },
+  {
+    "id": "p3",
+    "title": "Quantum Healthcare",
+    "category": "Patient Triage Agent",
+    "image": "https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=2670&auto=format&fit=crop",
+    "link": "#"
+  },
+  {
+    "id": "p4",
+    "title": "Nova Retail",
+    "category": "Dynamic Pricing Engine",
+    "image": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=2670&auto=format&fit=crop",
+    "link": "#"
+  }
+]
