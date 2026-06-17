@@ -62,7 +62,6 @@ export function TeamSection() {
                   }}
                   transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  {/* @ts-expect-error Next 16 / React 19 type mismatch */}
                   <Image
                     src={member.photo}
                     alt={member.name}
