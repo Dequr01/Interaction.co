@@ -1,165 +1,139 @@
-"use client";
+'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
-import { useScroll, useMotionValueEvent } from 'framer-motion';
-import { useParticleEngine } from './ParticleCanvas';
-import teamData from '../../public/team.json';
-import { audioEngine } from '@/lib/audio';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import teamData from '../../data/team.json';
+import { Users, Globe } from 'lucide-react';
+import Link from 'next/link';
+import { BadgePill } from './ui/BadgePill';
 
-export const TeamSection = () => {
-  const { setState } = useParticleEngine();
-  const sectionRef = useRef<HTMLElement>(null);
+const GithubIcon = ({ className }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.2c3-.3 6-1.5 6-6.5a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 5 3 6.2 6 6.5a4.8 4.8 0 0 0-1 3.2v4"></path>
+  </svg>
+);
+
+const LinkedinIcon = ({ className }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+    <rect x="2" y="9" width="4" height="12"></rect>
+    <circle cx="4" cy="4" r="2"></circle>
+  </svg>
+);
+
+export function TeamSection() {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end end"]
-  });
-
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    // Calculate the active index based on scroll progress
-    const index = Math.min(
-      teamData.length - 1,
-      Math.max(0, Math.floor(latest * teamData.length))
-    );
-    
-    if (index !== activeIndex) {
-      setActiveIndex(index);
-      setState(`image:${index}`);
-    }
-  });
-
-  const scrollToIndex = (index: number) => {
-    if (!sectionRef.current) return;
-    
-    // Total scrollable height within this section is the section height minus 1 viewport height
-    const sectionTop = sectionRef.current.offsetTop;
-    const scrollableDistance = sectionRef.current.offsetHeight - window.innerHeight;
-    
-    const targetProgress = (index + 0.1) / teamData.length;
-    const targetScroll = sectionTop + targetProgress * scrollableDistance;
-    
-    window.scrollTo({
-      top: targetScroll,
-      behavior: 'smooth'
-    });
-  };
-
   return (
-    <section
-      id="team"
-      ref={sectionRef}
-      className="relative w-full"
-      style={{ 
-        zIndex: 2,
-        height: `${teamData.length * 100}vh` // Allocate 100vh of scroll per team member
-      }}
-    >
-      <div className="sticky top-0 h-screen w-full flex flex-col lg:flex-row items-stretch overflow-hidden pointer-events-auto">
-        {/* LEFT/TOP — Header and transparent viewport for particles */}
-        <div className="relative w-full lg:w-1/2 h-[25vh] lg:h-full shrink-0 flex flex-col p-6 md:p-12 lg:p-16 z-10 pointer-events-none">
-          <p className="section-label mb-2 lg:mb-4">The people</p>
-          <h2
-            className="font-cormorant font-bold leading-tight"
-            style={{ fontSize: 'clamp(1.8rem, 3.2vw, 2.8rem)', color: 'var(--color-text-primary)', letterSpacing: '-0.02em' }}
-          >
-            Built by engineers,<br />
-            <span className="gradient-text italic">led by builders</span>
+    <section id="team" className="relative bg-bg">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-24 pb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="mb-12"
+        >
+          <BadgePill>
+            <Users className="w-4 h-4 text-text-secondary" />
+            THE TEAM
+          </BadgePill>
+          <h2 className="mt-8 font-display text-4xl md:text-5xl font-bold tracking-tight text-text-primary">
+            Meet the Minds
           </h2>
-        </div>
+        </motion.div>
+      </div>
 
-        {/* RIGHT/BOTTOM — Dynamic minimalist typography */}
-        <div className="relative w-full lg:w-1/2 flex-1 flex items-center justify-center p-6 md:p-14 z-10">
-          <div className="relative w-full h-full max-w-md flex items-center justify-center">
-            {teamData.map((member, i) => {
-              const isActive = i === activeIndex;
-              return (
-                <div
+      <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row relative">
+        
+        {/* Sticky Image Side (Left on desktop) */}
+        <div className="w-full md:w-1/2 md:h-screen sticky top-0 flex items-center justify-center py-10 md:py-0 overflow-hidden z-10">
+          <div className="relative w-full aspect-square md:aspect-[4/5] max-w-md rounded-2xl md:rounded-3xl overflow-hidden glass-card p-2 md:p-4">
+            <div className="relative w-full h-full rounded-xl md:rounded-2xl overflow-hidden bg-black/20">
+              {teamData.map((member, index) => (
+                <motion.div
                   key={member.id}
-                  className={`absolute w-full transition-all duration-700 ease-out flex flex-col ${
-                    isActive
-                      ? 'opacity-100 translate-y-0 pointer-events-auto'
-                      : 'opacity-0 translate-y-8 pointer-events-none'
-                  }`}
+                  className="absolute inset-0"
+                  initial={false}
+                  animate={{ 
+                    opacity: activeIndex === index ? 1 : 0,
+                    scale: activeIndex === index ? 1 : 1.1,
+                  }}
+                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  {/* Progress Indicator */}
-                  <div className="flex items-center gap-3 mb-6">
-                    <p className="section-label m-0">
-                      {String(i + 1).padStart(2, '0')}
-                    </p>
-                    <div className="h-px w-8" style={{ background: 'var(--color-border-accent)' }} />
-                    <p className="section-label m-0" style={{ color: 'var(--color-text-muted)' }}>
-                      {String(teamData.length).padStart(2, '0')}
-                    </p>
-                  </div>
-
-                  <h2
-                    className="font-cormorant font-bold leading-tight mb-2"
-                    style={{ fontSize: 'clamp(2.8rem, 4vw, 4rem)', color: 'var(--color-text-primary)', letterSpacing: '-0.02em' }}
-                  >
-                    {member.name}
-                  </h2>
-
-                  <p
-                    className="text-xs font-mono font-bold uppercase tracking-[0.2em] mb-6"
-                    style={{ color: 'var(--color-accent)' }}
-                  >
-                    {member.designation}
-                  </p>
-
-                  <p
-                    className="text-base leading-relaxed mb-8"
-                    style={{ color: 'var(--color-text-secondary)', fontWeight: 300 }}
-                  >
-                    {member.about}
-                  </p>
-
-                  <div className="flex gap-5 items-center">
-                    {member.links && Object.entries(member.links).map(([platform, url]) => (
-                      <a
-                        key={platform}
-                        href={url as string}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="text-sm font-medium capitalize transition-colors hover:underline underline-offset-4"
-                        style={{ color: 'var(--color-text-muted)' }}
-                      >
-                        {platform} ↗
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              );
-            })}
-
-            {/* Slider Dots Indicator */}
-            <div className="absolute right-[-24px] lg:right-[-40px] top-1/2 -translate-y-1/2 flex flex-col gap-3.5 z-20 pointer-events-auto">
-              {teamData.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => scrollToIndex(i)}
-                  onMouseEnter={() => audioEngine.playHover()}
-                  className="group relative flex items-center justify-center p-2 cursor-pointer focus:outline-none"
-                  aria-label={`Go to team member ${i + 1}`}
-                >
-                  <span
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      i === activeIndex
-                        ? 'bg-[var(--color-accent)] scale-150 shadow-[0_0_8px_var(--particle-glow)]'
-                        : 'bg-[var(--color-text-muted)] opacity-40 group-hover:opacity-100 group-hover:scale-125'
-                    }`}
+                  {/* @ts-expect-error Next 16 / React 19 type mismatch */}
+                  <Image
+                    src={member.photo}
+                    alt={member.name}
+                    fill
+                    className="object-cover object-top"
                   />
-                  {/* Tooltip on hover */}
-                  <span className="absolute right-8 font-mono text-[0.65rem] uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity bg-[var(--color-surface-blur)] px-2 py-1 rounded border border-[var(--color-border)] pointer-events-none whitespace-nowrap" style={{ color: 'var(--color-text-primary)' }}>
-                    {teamData[i].name.split(' ')[0]}
-                  </span>
-                </button>
+                  {/* Subtle vignette for the image */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-bg/60 via-transparent to-transparent" />
+                </motion.div>
               ))}
             </div>
           </div>
         </div>
+
+        {/* Scrolling Info Side (Right on desktop) */}
+        <div className="w-full md:w-1/2 relative z-20 pb-32 md:pb-[30vh]">
+          {teamData.map((member, index) => (
+            <motion.div
+              key={member.id}
+              className="min-h-[70vh] md:min-h-screen flex flex-col justify-center py-20"
+              onViewportEnter={() => setActiveIndex(index)}
+              viewport={{ margin: "-45% 0px -45% 0px", amount: "some" }}
+            >
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: false, margin: "-20% 0px -20% 0px" }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                className="glass-card p-8 md:p-12 rounded-2xl relative overflow-hidden group"
+              >
+                {/* Accent glow background on hover */}
+                <div className="absolute -inset-2 bg-gradient-to-br from-accent-blue/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-2xl" />
+
+                <div className="relative z-10">
+                  <h3 className="text-3xl md:text-5xl font-display font-bold text-text-primary tracking-tight mb-2">
+                    {member.name}
+                  </h3>
+                  <p className="text-accent-blue font-medium tracking-widest uppercase text-xs mb-8">
+                    {member.designation}
+                  </p>
+                  
+                  {member.about && (
+                    <p className="text-lg md:text-xl text-text-secondary leading-relaxed mb-10 font-medium">
+                      {member.about}
+                    </p>
+                  )}
+
+                  <div className="flex gap-4">
+                    {member.links.github && (
+                      <Link href={`https://${member.links.github.replace('https://', '')}`} target="_blank" className="p-3 rounded-full bg-surface border border-surface-border hover:bg-surface-border transition-colors text-text-secondary hover:text-text-primary">
+                        <GithubIcon className="w-5 h-5" />
+                      </Link>
+                    )}
+                    {member.links.linkedin && (
+                      <Link href={member.links.linkedin} target="_blank" className="p-3 rounded-full bg-surface border border-surface-border hover:bg-surface-border transition-colors text-text-secondary hover:text-text-primary">
+                        <LinkedinIcon className="w-5 h-5" />
+                      </Link>
+                    )}
+                    {member.links.website && (
+                      <Link href={member.links.website.startsWith('http') ? member.links.website : `https://${member.links.website}`} target="_blank" className="p-3 rounded-full bg-surface border border-surface-border hover:bg-surface-border transition-colors text-text-secondary hover:text-text-primary">
+                        <Globe className="w-5 h-5" />
+                      </Link>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          ))}
+        </div>
+
       </div>
     </section>
   );
-};
-
+}

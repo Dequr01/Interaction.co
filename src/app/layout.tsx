@@ -1,24 +1,17 @@
 import type { Metadata } from 'next';
-import { Cormorant_Garamond, Inter, Space_Mono } from 'next/font/google';
+import { Inter, Inter_Tight } from 'next/font/google';
 import './globals.css';
-import { SmoothScrolling } from '@/components/SmoothScrolling';
-
-const cormorant = Cormorant_Garamond({
-  weight: ['300', '400', '600', '700'],
-  subsets: ['latin'],
-  variable: '--font-cormorant',
-  style: ['normal', 'italic'],
-});
 
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
+  display: 'swap',
 });
 
-const spaceMono = Space_Mono({
-  weight: ['400', '700'],
+const interTight = Inter_Tight({
   subsets: ['latin'],
-  variable: '--font-space-mono',
+  variable: '--font-display',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -32,31 +25,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    // Suppress hydration warning because we modify the class synchronously in <head>
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var stored = localStorage.getItem('interaction-theme');
-                  var isDark = stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches);
-                  if (isDark) {
-                    document.documentElement.classList.add('dark');
-                  } else {
-                    document.documentElement.classList.add('light');
-                  }
-                } catch (e) {}
-              })();
-            `,
-          }}
-        />
-      </head>
-      <body className={`${cormorant.variable} ${inter.variable} ${spaceMono.variable} font-sans`}>
-        <SmoothScrolling>
-          {children}
-        </SmoothScrolling>
+    <html lang="en">
+      <body className={`${inter.variable} ${interTight.variable} font-sans bg-bg text-text-primary antialiased`}>
+        {children}
       </body>
     </html>
   );
