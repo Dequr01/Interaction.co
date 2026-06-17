@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Button } from '../atoms/Button';
 
 const SERVICES = [
   {
@@ -184,9 +185,9 @@ export const ServicesSection = () => {
               We adapt to whatever your project demands.
             </p>
           </div>
-          <button className="btn-primary px-7 py-3 rounded-full text-sm font-semibold whitespace-nowrap">
+          <Button variant="primary" size="md">
             Let's talk →
-          </button>
+          </Button>
         </div>
       </div>
     </section>
