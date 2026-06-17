@@ -45,8 +45,8 @@ export function GlassSelector({
       )}
       onMouseMove={onMouseMove}
       onMouseEnter={onMouseEnter}
-      onMouseLeave={(e) => {
-        onMouseLeave(e);
+      onMouseLeave={() => {
+        onMouseLeave();
         if (onOptionHover) onOptionHover(null);
       }}
     >
@@ -78,7 +78,7 @@ export function GlassSelector({
                 }}
               />
             )}
-            {opt.icon && <Icon name={opt.icon} size={size === 'sm' ? 14 : 18} />}
+            {opt.icon && <Icon icon={opt.icon} size={size === 'sm' ? 'sm' : 'md'} />}
             <span>{opt.label}</span>
           </button>
         ))}
