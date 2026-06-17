@@ -57,7 +57,6 @@ export function WorkSection() {
                   }}
                   transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  {/* @ts-expect-error Next 16 / React 19 type mismatch */}
                   <Image
                     src={project.image}
                     alt={project.title}
@@ -77,9 +76,9 @@ export function WorkSection() {
           {projectsData.map((project, index) => (
             <motion.div
               key={project.id}
-              className="min-h-[70vh] md:min-h-screen flex flex-col justify-center py-20"
+              className="min-h-[70vh] md:min-h-screen flex flex-col justify-center py-20 snap-center"
               onViewportEnter={() => setActiveIndex(index)}
-              viewport={{ margin: "-45% 0px -45% 0px", amount: "some" }}
+              viewport={{ margin: "-49% 0px -49% 0px", amount: "some" }}
             >
               <Link href={project.link} className="block group">
                 <motion.div
