@@ -129,6 +129,14 @@
     color: var(--color-accent);
   }
 
+  .glow-effect {
+    box-shadow: 0 0 20px var(--particle-glow);
+    transition: box-shadow 0.3s ease;
+  }
+  .glow-effect:hover {
+    box-shadow: 0 0 35px var(--color-accent);
+  }
+
   /* Scrollbar */
   ::-webkit-scrollbar { width: 4px; }
   ::-webkit-scrollbar-track { background: transparent; }

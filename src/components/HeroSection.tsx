@@ -16,7 +16,7 @@ const containerVariants = {
     opacity: 1,
     transition: {
       staggerChildren: 0.12,
-      delayChildren: 0.15,
+      delayChildren: 1.6,
     },
   },
 };
@@ -35,8 +35,8 @@ export const HeroSection = () => {
   });
 
   useEffect(() => {
-    // Chaos → snap to INTERACTION text after 900 ms
-    const snap = setTimeout(() => setState('text:INTERACTION'), 900);
+    // Chaos → snap to INTERACTION text almost immediately so it acts as the preloader background
+    const snap = setTimeout(() => setState('text:INTERACTION'), 100);
     return () => clearTimeout(snap);
   }, [setState]);
 

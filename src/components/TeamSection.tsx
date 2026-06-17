@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useScroll, useMotionValueEvent } from 'framer-motion';
 import { useParticleEngine } from './ParticleCanvas';
 import teamData from '../../public/team.json';
+import { audioEngine } from '@/lib/audio';
 
 export const TeamSection = () => {
   const { setState } = useParticleEngine();
@@ -137,6 +138,7 @@ export const TeamSection = () => {
                 <button
                   key={i}
                   onClick={() => scrollToIndex(i)}
+                  onMouseEnter={() => audioEngine.playHover()}
                   className="group relative flex items-center justify-center p-2 cursor-pointer focus:outline-none"
                   aria-label={`Go to team member ${i + 1}`}
                 >

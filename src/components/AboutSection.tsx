@@ -1,6 +1,8 @@
 "use client";
 
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
+import { useInView } from 'framer-motion';
+import { useParticleEngine } from './ParticleCanvas';
 
 const METRICS = [
   { value: '150+', label: 'Projects shipped' },
@@ -12,9 +14,20 @@ const METRICS = [
 const LOGOS = ['Acme Corp', 'NovaTech', 'Helix', 'Meridian', 'Orbis', 'Stratos'];
 
 export const AboutSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { amount: 0.3, margin: "0px 0px -20% 0px" });
+  const { setState } = useParticleEngine();
+
+  useEffect(() => {
+    if (isInView) {
+      setState('text:INTERACTION2');
+    }
+  }, [isInView, setState]);
+
   return (
     <section
       id="about"
+      ref={sectionRef}
       className="relative z-10 w-full pointer-events-auto glass-panel"
     >
       {/* Metrics strip */}

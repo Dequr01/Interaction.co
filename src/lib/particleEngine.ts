@@ -176,8 +176,18 @@ export class ParticleEngine {
     this.updateThemeColors();
 
     const isMobile = window.innerWidth < 768;
-    this.step = isMobile ? MOBILE_STEP : DESKTOP_STEP;
-    this.cap  = isMobile ? MOBILE_CAP  : DESKTOP_CAP;
+    
+    const hwConcurrency = navigator.hardwareConcurrency || 4;
+    const deviceMemory = (navigator as any).deviceMemory || 4;
+    const isLowEnd = hwConcurrency <= 4 || deviceMemory <= 4;
+
+    if (isLowEnd) {
+      this.step = isMobile ? 8 : 6;
+      this.cap  = isMobile ? 1500 : 3000;
+    } else {
+      this.step = isMobile ? 5 : 4;
+      this.cap  = isMobile ? 3000 : 18000;
+    }
 
     canvas.width  = window.innerWidth;
     canvas.height = window.innerHeight;

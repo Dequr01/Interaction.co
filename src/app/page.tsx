@@ -4,13 +4,15 @@ import React from 'react';
 import { ParticleCanvasProvider } from '@/components/ParticleCanvas';
 import { Nav } from '@/components/Nav';
 import { HeroSection } from '@/components/HeroSection';
+import { Preloader } from '@/components/Preloader';
 import { ServicesSection } from '@/components/ServicesSection';
 import { TeamSection } from '@/components/TeamSection';
 import { AboutSection } from '@/components/AboutSection';
 
 export default function Home() {
   return (
-    <main className="w-full min-h-screen relative overflow-x-hidden" style={{ background: 'var(--color-bg)' }}>
+    <main className="w-full min-h-screen relative overflow-x-clip" style={{ background: 'var(--color-bg)' }}>
+      <Preloader />
       <ParticleCanvasProvider>
         <Nav />
         <div className="relative z-10 w-full flex flex-col">
