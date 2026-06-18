@@ -332,3 +332,105 @@
 }
 
 
+/* Mobile Responsiveness Overrides for Split Scroll Sections */
+@media (max-width: 767px) {
+  #work .sticky,
+  #team .sticky,
+  #about .sticky {
+    height: 35dvh !important;
+    top: 76px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  
+  #work .sticky > div,
+  #team .sticky > div,
+  #about .sticky > div {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  
+  #work .sticky .flex-1,
+  #team .sticky .flex-1,
+  #about .sticky .flex-1 {
+    height: 100% !important;
+  }
+  
+  #work .sticky .w-full.md\:w-1\/2,
+  #team .sticky .w-full.md\:w-1\/2,
+  #about .sticky .w-full.md\:w-1\/2 {
+    height: 100% !important;
+  }
+  
+  #team .sticky .max-h-\[500px\] {
+    max-height: 100% !important;
+    height: 100% !important;
+  }
+
+  #work h2,
+  #team h2,
+  #about h2 {
+    font-size: 1.75rem !important;
+    line-height: 1.2 !important;
+    margin-top: 1rem !important;
+  }
+
+  /* Override foreground scrolling layer */
+  #work > div.relative.z-10,
+  #team > div.relative.z-10,
+  #about > div.relative.z-10 {
+    margin-top: -35dvh !important;
+  }
+
+  /* Card sections */
+  #work > div.relative.z-10 > div,
+  #team > div.relative.z-10 > div,
+  #about > div.relative.z-10 > div {
+    height: auto !important;
+    min-height: 65dvh !important;
+    padding-top: 16px !important;
+    padding-bottom: 48px !important;
+  }
+
+  /* Spacers on mobile cards */
+  #work > div.relative.z-10 > div > div > div:first-child,
+  #team > div.relative.z-10 > div > div > div:first-child,
+  #about > div.relative.z-10 > div > div > div:first-child {
+    height: 35dvh !important;
+  }
+
+  /* Card wrapper containers */
+  #work > div.relative.z-10 > div > div > div.pointer-events-auto,
+  #team > div.relative.z-10 > div > div > div.pointer-events-auto,
+  #about > div.relative.z-10 > div > div > div.pointer-events-auto {
+    padding-top: 12px !important;
+    padding-bottom: 24px !important;
+    height: auto !important;
+  }
+
+  /* General card padding and content optimization */
+  #work .glass-card,
+  #team .glass-card,
+  #about .glass-card {
+    padding: 1.25rem !important;
+  }
+  
+  #about .glass-card h3,
+  #team .glass-card h3 {
+    font-size: 1.5rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+  
+  #about .glass-card p,
+  #team .glass-card p {
+    font-size: 0.95rem !important;
+  }
+  
+  #about .glass-card .mb-8 {
+    margin-bottom: 1rem !important;
+  }
+  
+  #team .glass-card .mb-6 {
+    margin-bottom: 0.75rem !important;
+  }
+}

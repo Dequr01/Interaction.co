@@ -133,7 +133,7 @@ export function ContactSection() {
             transition={{ delay: 0.1 }}
             className="flex-1 w-full"
           >
-            <div className="glass-card p-6 md:p-8 rounded-3xl relative overflow-hidden group h-[400px]">
+            <div className="glass-card p-6 md:p-8 rounded-3xl relative overflow-hidden group h-[520px] md:h-[430px]">
               <div className="absolute -inset-2 bg-gradient-to-br from-accent-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-2xl pointer-events-none" />
               
               <AnimatePresence mode="wait">

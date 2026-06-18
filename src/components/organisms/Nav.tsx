@@ -57,7 +57,7 @@ export function Nav() {
   const isExpanded = isHovered || isAtTop;
 
   return (
-    <header className="fixed top-6 left-0 right-0 z-50 flex justify-center pointer-events-none px-6">
+    <header className="fixed top-6 left-0 right-0 z-50 flex justify-center pointer-events-none px-2 md:px-6">
       <motion.nav 
         layout
         onMouseMove={handleMouseMove}
@@ -94,9 +94,9 @@ export function Nav() {
         />
 
         {/* Logo Left */}
-        <motion.div layout className="shrink-0 px-4 flex items-center z-10">
+        <motion.div layout className="shrink-0 px-2 md:px-4 flex items-center z-10">
           <Link href="/" className="flex items-center">
-            <span className="font-display font-medium text-xl tracking-tighter text-text-primary">
+            <span className="font-display font-medium text-xs md:text-xl tracking-tighter text-text-primary">
               INTERACTION
             </span>
           </Link>
@@ -114,7 +114,7 @@ export function Nav() {
               className="flex items-center overflow-hidden"
             >
               {/* Links Slider using GlassSelector */}
-              <div className="flex items-center px-4 border-l border-black/5 dark:border-white/10 ml-2 whitespace-nowrap">
+              <div className="flex items-center px-2 md:px-4 border-l border-black/5 dark:border-white/10 ml-1 md:ml-2 whitespace-nowrap">
                 <GlassSelector
                   options={links.map(link => ({ label: link, value: link }))}
                   value={hoveredLink || activeSection}
@@ -138,9 +138,9 @@ export function Nav() {
               </div>
 
               {/* CTA Right */}
-              <div className="pl-4 pr-1 border-l border-black/5 dark:border-white/10 shrink-0">
+              <div className="pl-2 md:pl-4 pr-1 border-l border-black/5 dark:border-white/10 shrink-0">
                 <Link href="/contact">
-                  <Button variant="rainbow" size="md">
+                  <Button variant="rainbow" size="sm" className="h-[32px] px-2.5 text-[9px] md:h-[36px] md:px-4 md:text-xs">
                     Get Started
                   </Button>
                 </Link>
