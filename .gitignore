@@ -37,6 +37,9 @@ yarn-error.log*
 # local database files
 data/leads.json
 
+# documentation
+README.md
+
 # vercel
 .vercel
 
