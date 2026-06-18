@@ -38,7 +38,8 @@ yarn-error.log*
 data/leads.json
 
 # documentation
-README.md
+DETAILED_README.md
+
 
 # vercel
 .vercel
