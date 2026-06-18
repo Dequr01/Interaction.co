@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { Mail, Phone, MapPin } from 'lucide-react';
 
 const GithubIcon = ({ className }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -25,29 +26,44 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-surface-border snap-end">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-12 flex flex-col md:flex-row justify-between items-center gap-6">
+    <footer className="border-t border-surface-border snap-end bg-black/20">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 py-6 flex flex-col lg:flex-row justify-between items-center gap-6">
         
-        <div className="flex flex-col items-center md:items-start gap-2">
-          <Link href="/" className="font-display font-bold text-xl tracking-tight text-text-primary">
+        {/* Left Side: Logo & Copyright */}
+        <div className="flex flex-col items-center lg:items-start gap-1 shrink-0">
+          <Link href="/" className="font-display font-bold text-lg tracking-tight text-text-primary">
             INTERACTION
           </Link>
-          <p className="text-text-secondary text-sm">
+          <p className="text-text-secondary text-xs">
             © {currentYear} Interaction PVT LTD. All rights reserved.
           </p>
         </div>
 
-        <div className="flex items-center gap-6">
+        {/* Center: Plain Text Contact Info */}
+        <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 text-sm font-medium text-text-secondary">
+          <a href="mailto:hello@interaction.pk" className="hover:text-accent-blue transition-colors flex items-center gap-2">
+            <Mail className="w-4 h-4" /> hello@interaction.pk
+          </a>
+          <a href="tel:+923001234567" className="hover:text-accent-blue transition-colors flex items-center gap-2">
+            <Phone className="w-4 h-4" /> +92 300 1234567
+          </a>
+          <div className="flex items-center gap-2">
+            <MapPin className="w-4 h-4" /> DHA Phase 6, Lahore
+          </div>
+        </div>
+
+        {/* Right Side: Socials */}
+        <div className="flex items-center gap-5 shrink-0">
           <Link href="#" className="text-text-secondary hover:text-text-primary transition-colors">
-            <LinkedinIcon className="w-5 h-5" />
+            <LinkedinIcon className="w-4 h-4" />
             <span className="sr-only">LinkedIn</span>
           </Link>
           <Link href="#" className="text-text-secondary hover:text-text-primary transition-colors">
-            <TwitterIcon className="w-5 h-5" />
+            <TwitterIcon className="w-4 h-4" />
             <span className="sr-only">Twitter</span>
           </Link>
           <Link href="#" className="text-text-secondary hover:text-text-primary transition-colors">
-            <GithubIcon className="w-5 h-5" />
+            <GithubIcon className="w-4 h-4" />
             <span className="sr-only">GitHub</span>
           </Link>
         </div>

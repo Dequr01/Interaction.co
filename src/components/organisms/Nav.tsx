@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, MouseEvent } from 'react';
 import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 import { motion, AnimatePresence, useMotionValue, useMotionTemplate } from 'framer-motion';
 import { Button } from '../atoms/Button';
 import { GlassSelector } from '../atoms/GlassSelector';
@@ -11,6 +12,8 @@ export function Nav() {
   const [isHovered, setIsHovered] = useState(false);
   const [isAtTop, setIsAtTop] = useState(true);
   const [activeSection, setActiveSection] = useState('Work');
+  const pathname = usePathname();
+  const router = useRouter();
   
   const links = ['Work', 'Team', 'About', 'Contact'];
 
@@ -119,8 +122,16 @@ export function Nav() {
                   onChange={(val) => {
                     setHoveredLink(null);
                     setActiveSection(val);
-                    const el = document.getElementById(val.toLowerCase());
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    if (val === 'Contact') {
+                      router.push('/contact');
+                      return;
+                    }
+                    if (pathname !== '/') {
+                      router.push('/#' + val.toLowerCase());
+                    } else {
+                      const el = document.getElementById(val.toLowerCase());
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }
                   }}
                   className="bg-transparent border-none shadow-none"
                 />
@@ -128,7 +139,7 @@ export function Nav() {
 
               {/* CTA Right */}
               <div className="pl-4 pr-1 border-l border-black/5 dark:border-white/10 shrink-0">
-                <Link href="#contact">
+                <Link href="/contact">
                   <Button variant="rainbow" size="md">
                     Get Started
                   </Button>

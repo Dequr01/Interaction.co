@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@variant dark (&:where(.dark, .dark *));
+
 
 @theme {
   --color-bg: var(--theme-bg);
@@ -194,3 +196,139 @@
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
+
+.animate-rgb-carousel {
+  background-size: 300% 300% !important;
+  animation: rgb-carousel 1s linear infinite !important;
+}
+
+@keyframes rgb-carousel {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Light Theme Aesthetic Depth Improvements */
+:root[data-theme="light"],
+.light-mode,
+.light,
+:root:not(.dark) {
+  --theme-bg: #EEEEF0 !important;
+}
+
+:root[data-theme="light"] body,
+.light-mode body,
+.light body,
+:root:not(.dark) body {
+  background-color: #EEEEF0 !important;
+}
+
+:root[data-theme="light"] canvas,
+.light-mode canvas,
+.light canvas,
+:root:not(.dark) canvas {
+  mix-blend-mode: multiply !important;
+}
+
+:root[data-theme="light"] body::before,
+.light-mode body::before,
+.light body::before,
+:root:not(.dark) body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: radial-gradient(circle at center, #F5F5F7 0%, #D8D8DC 100%) !important;
+  z-index: -60 !important;
+  pointer-events: none;
+}
+
+:root[data-theme="light"] section:first-of-type,
+.light-mode section:first-of-type,
+.light section:first-of-type,
+:root:not(.dark) section:first-of-type {
+  background: transparent !important;
+}
+
+:root[data-theme="light"] section h1:nth-of-type(2),
+.light-mode section h1:nth-of-type(2),
+.light section h1:nth-of-type(2),
+:root:not(.dark) section h1:nth-of-type(2),
+:root[data-theme="light"] section h1:nth-of-type(3),
+.light-mode section h1:nth-of-type(3),
+.light section h1:nth-of-type(3),
+:root:not(.dark) section h1:nth-of-type(3) {
+  background: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: #4A4A52 !important;
+  color: #4A4A52 !important;
+  mix-blend-mode: normal !important;
+  filter: drop-shadow(0 4px 24px rgba(0, 0, 0, 0.06)) !important;
+}
+
+:root[data-theme="light"] section h1:nth-of-type(2)::first-line,
+.light-mode section h1:nth-of-type(2)::first-line,
+.light section h1:nth-of-type(2)::first-line,
+:root:not(.dark) section h1:nth-of-type(2)::first-line,
+:root[data-theme="light"] section h1:nth-of-type(3)::first-line,
+.light-mode section h1:nth-of-type(3)::first-line,
+.light section h1:nth-of-type(3)::first-line,
+:root:not(.dark) section h1:nth-of-type(3)::first-line {
+  -webkit-text-fill-color: #0D0D0F !important;
+  color: #0D0D0F !important;
+}
+
+:root[data-theme="light"] section h1:nth-of-type(4),
+.light-mode section h1:nth-of-type(4),
+.light section h1:nth-of-type(4),
+:root:not(.dark) section h1:nth-of-type(4),
+:root[data-theme="light"] section h2:nth-of-type(3),
+.light-mode section h2:nth-of-type(3),
+.light section h2:nth-of-type(3),
+:root:not(.dark) section h2:nth-of-type(3),
+:root[data-theme="light"] header nav > div:nth-child(1),
+.light-mode header nav > div:nth-child(1),
+.light header nav > div:nth-child(1),
+:root:not(.dark) header nav > div:nth-child(1),
+:root[data-theme="light"] header nav > div:nth-child(2),
+.light-mode header nav > div:nth-child(2),
+.light header nav > div:nth-child(2),
+:root:not(.dark) header nav > div:nth-child(2),
+:root[data-theme="light"] button > span[class*="opacity-0"],
+.light-mode button > span[class*="opacity-0"],
+.light button > span[class*="opacity-0"],
+:root:not(.dark) button > span[class*="opacity-0"] {
+  filter: invert(1) sepia(21%) saturate(2200%) hue-rotate(202deg) brightness(91%) contrast(93%) opacity(47%) !important;
+  mix-blend-mode: multiply !important;
+}
+
+:root[data-theme="light"] header nav,
+.light-mode header nav,
+.light header nav,
+:root:not(.dark) header nav {
+  background-color: rgba(255, 255, 255, 0.65) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Selected nav item styling for light mode */
+:root[data-theme="light"] header nav button.text-white,
+.light-mode header nav button.text-white,
+.light header nav button.text-white,
+:root:not(.dark) header nav button.text-white {
+  color: #0D0D0F !important;
+}
+
+:root[data-theme="light"] header nav button.text-white > div,
+.light-mode header nav button.text-white > div,
+.light header nav button.text-white > div,
+:root:not(.dark) header nav button.text-white > div {
+  background-color: rgba(0, 0, 0, 0.06) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+

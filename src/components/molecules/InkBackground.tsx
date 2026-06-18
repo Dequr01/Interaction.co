@@ -47,8 +47,8 @@ export function InkBackground() {
       SUNRAYS_RESOLUTION: 196,
       SUNRAYS_WEIGHT: 1.0,
       SPLAT_COLOR: dark 
-        ? { r: 0.04, g: 0.04, b: 0.045 } // Deep Space Gray (avoids blowing out to white)
-        : { r: 0.02, g: 0.02, b: 0.02 }, // Darker for light mode
+        ? { r: 0.04, g: 0.04, b: 0.045 }
+        : { r: 0.12, g: 0.04, b: 0.24 },
     });
 
     // Initialize fluid simulation with current theme config
