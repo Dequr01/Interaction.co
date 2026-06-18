@@ -5084,11 +5084,6 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.npmjs.org/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
-sweetalert2@^11.26.25:
-  version "11.26.25"
-  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-11.26.25.tgz#ba24ffb79c67648ac51f834620baa15866a56e35"
-  integrity sha512-+hunCOJdJ6FLj04T9YSLvvZXRjsvIkTeTKP2e4VF8CaBias961BTnWiSFAy7F/CM5eq3QK2Rraoc5Gzftslvkg==
-
 symbol-tree@^3.2.4:
   version "3.2.4"
   resolved "https://registry.npmjs.org/symbol-tree/-/symbol-tree-3.2.4.tgz"
@@ -5380,11 +5375,6 @@ walker@^1.0.8:
   dependencies:
     makeerror "1.0.12"
 
-webgl-fluid@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/webgl-fluid/-/webgl-fluid-0.4.0.tgz#04ff876587f686f14c78276fe0dbe4d6ac137a1a"
-  integrity sha512-j/GMExSlSRYxNwFBAs5ogA9Xe6iXuYX+GiSERov4+dsTpcINFKesM6ObV0qiEk0RYZ0umYI6mFu8mY4BX15UxQ==
-
 webidl-conversions@^7.0.0:
   version "7.0.0"
   resolved "https://registry.npmjs.org/webidl-conversions/-/webidl-conversions-7.0.0.tgz"
@@ -5557,11 +5547,6 @@ yargs@^17.7.2:
     string-width "^4.2.3"
     y18n "^5.0.5"
     yargs-parser "^21.1.1"
-
-yarn@^1.22.22:
-  version "1.22.22"
-  resolved "https://registry.npmjs.org/yarn/-/yarn-1.22.22.tgz"
-  integrity sha512-prL3kGtyG7o9Z9Sv8IPfBNrWTDmXB4Qbes8A9rEzt6wkJV8mUvoirjU0Mp3GGAU06Y0XQyA3/2/RQFVuK7MTfg==
 
 yn@3.1.1:
   version "3.1.1"
