@@ -60,6 +60,7 @@ export function WorkSection() {
                     alt={project.title}
                     fill
                     className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
                   <div className="absolute inset-0 bg-black/20" />
                 </motion.div>

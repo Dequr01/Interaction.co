@@ -53,7 +53,7 @@ export function CtaSection() {
           </p>
           
           <div className="mt-10 relative z-10">
-            <Link href="#contact">
+            <Link href="/contact">
               <Button variant="primary" size="lg">
                 Contact Us
               </Button>

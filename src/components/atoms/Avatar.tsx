@@ -30,7 +30,7 @@ export const Avatar: React.FC<AvatarProps> = ({ src, alt = 'Avatar', initials, s
       )}
     >
       {src ? (
-        <Image src={src} alt={alt} fill className="object-cover" />
+        <Image src={src} alt={alt} fill className="object-cover" sizes="100px" />
       ) : (
         <span className="text-text-secondary font-medium tracking-widest uppercase">
           {initials || '?'}

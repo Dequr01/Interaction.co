@@ -1,4 +1,5 @@
 'use client';
+// Force reload JSON
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
@@ -50,7 +51,8 @@ export function TeamSection() {
         {/* Content Area Layout (Left Image, Right Blank Space) */}
         <div className="flex-1 w-full flex flex-col md:flex-row gap-8 min-h-0">
           {/* Left Side: Images */}
-          <div className="w-full md:w-1/2 h-full relative overflow-hidden rounded-2xl glass-card p-2 md:p-3 pointer-events-auto">
+          <div className="w-full md:w-1/2 h-full relative pointer-events-auto flex items-start justify-center md:justify-start">
+            <div className="h-full max-h-[500px] aspect-[4/5] max-w-full relative overflow-hidden rounded-2xl glass-card p-2 md:p-3 flex-shrink-0">
             <div className="relative w-full h-full rounded-xl overflow-hidden bg-black/20">
               {teamData.map((member, index) => (
                 <motion.div
@@ -67,11 +69,14 @@ export function TeamSection() {
                     src={member.photo}
                     alt={member.name}
                     fill
-                    className="object-cover object-top"
+                    className="object-cover"
+                    style={{ objectPosition: member.objectPosition || 'top center' }}
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 </motion.div>
               ))}
+            </div>
             </div>
           </div>
           
@@ -101,30 +106,34 @@ export function TeamSection() {
               <div className="w-full md:w-1/2 h-[40vh] md:h-full flex-shrink-0" />
               
               {/* Card */}
-              <div className="w-full md:w-1/2 h-full flex flex-col justify-center md:pl-8 pointer-events-auto">
+              <div className="w-full md:w-1/2 h-full flex flex-col justify-center md:pl-8 pointer-events-auto min-h-0">
                 <motion.div 
                   onViewportEnter={() => setActiveIndex(index)}
                   viewport={{ margin: "-40% 0px -40% 0px", amount: "some" }}
-                  className="w-full"
+                  className="w-full flex flex-col min-h-0 max-h-full"
                 >
-                  <div className="glass-card p-6 md:p-10 rounded-2xl relative overflow-hidden group">
+                  <div className="glass-card p-6 md:p-10 rounded-2xl relative overflow-hidden group flex flex-col min-h-0 max-h-full">
                     <div className="absolute -inset-2 bg-gradient-to-br from-accent-blue/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-2xl pointer-events-none" />
 
-                    <div className="relative z-10">
-                      <h3 className="text-3xl md:text-5xl font-display font-bold text-text-primary tracking-tight mb-2">
-                        {member.name}
-                      </h3>
-                      <p className="text-accent-blue font-mono font-bold tracking-widest uppercase text-[0.7rem] mb-6">
-                        {member.designation}
-                      </p>
+                    <div className="relative z-10 flex flex-col min-h-0 max-h-full">
+                      <div className="flex-shrink-0">
+                        <h3 className="text-3xl md:text-5xl font-display font-bold text-text-primary tracking-tight mb-2">
+                          {member.name}
+                        </h3>
+                        <p className="text-accent-blue font-mono font-bold tracking-widest uppercase text-[0.7rem] mb-6">
+                          {member.designation}
+                        </p>
+                      </div>
                       
                       {member.about && (
-                        <p className="text-base md:text-lg text-text-secondary leading-relaxed mb-8 font-medium">
-                          {member.about}
-                        </p>
+                        <div className="overflow-y-auto min-h-0 pr-2 -mr-2" style={{ scrollbarWidth: 'thin' }}>
+                          <p className="text-base md:text-lg text-text-secondary leading-relaxed font-medium pb-2">
+                            {member.about}
+                          </p>
+                        </div>
                       )}
 
-                      <div className="flex gap-3 mt-auto">
+                      <div className="flex gap-3 mt-auto pt-4 flex-shrink-0">
                         {member.links.github && (
                           <Link href={`https://${member.links.github.replace('https://', '')}`} target="_blank" className="p-3 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:bg-black/10 dark:hover:bg-white/10 transition-colors text-text-secondary hover:text-text-primary">
                             <GithubIcon className="w-4 h-4 md:w-5 md:h-5" />
