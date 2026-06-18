@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
 import { Inter, Inter_Tight } from 'next/font/google';
 import './globals.css';
+import { InkBackground } from '@/components/molecules/InkBackground';
+import { ThemeProvider } from '@/components/providers/ThemeProvider';
+import { ThemeToggle } from '@/components/molecules/ThemeToggle';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -25,9 +28,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable} ${interTight.variable} font-sans bg-bg text-text-primary antialiased`}>
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.variable} ${interTight.variable} font-sans text-text-primary antialiased`}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <InkBackground />
+          <ThemeToggle />
+          <div id="main-scroll-container" className="h-screen w-full overflow-y-auto overflow-x-hidden relative z-0">
+            {children}
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );

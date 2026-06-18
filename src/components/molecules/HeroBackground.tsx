@@ -23,10 +23,10 @@ export function HeroBackground() {
   ];
 
   return (
-    <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden bg-[#040405]">
+    <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden bg-white dark:bg-[#040405] transition-colors duration-700">
       
       {/* Starfield */}
-      <div className="absolute inset-0 opacity-30"
+      <div className="absolute inset-0 opacity-10 dark:opacity-30 mix-blend-difference dark:mix-blend-normal transition-opacity duration-700"
            style={{ 
              backgroundImage: `url("data:image/svg+xml,%3Csvg width='300' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1' fill='white'/%3E%3Ccircle cx='100' cy='150' r='1.5' fill='white'/%3E%3Ccircle cx='250' cy='80' r='0.5' fill='white'/%3E%3Ccircle cx='180' cy='250' r='1' fill='white'/%3E%3Ccircle cx='280' cy='200' r='1.5' fill='white'/%3E%3C/svg%3E")`,
              backgroundSize: '300px 300px'
@@ -34,19 +34,19 @@ export function HeroBackground() {
       />
 
       {/* Massive ambient glow behind everything */}
-      <div className="absolute bottom-[20%] left-1/2 -translate-x-1/2 w-[120vw] h-[60vh] flex opacity-60 blur-[100px] mix-blend-screen">
+      <div className="absolute bottom-[20%] left-1/2 -translate-x-1/2 w-[120vw] h-[60vh] flex opacity-20 dark:opacity-60 blur-[100px] mix-blend-multiply dark:mix-blend-screen transition-opacity duration-700">
         <div className="w-1/3 h-full bg-[#F59E0B]" />
         <div className="w-1/3 h-full bg-[#A855F7]" />
         <div className="w-1/3 h-full bg-[#3B82F6]" />
       </div>
 
       {/* Vertical Rays Container */}
-      <div className="absolute bottom-[35%] left-0 w-full h-[50vh] mask-rays"
+      <div className="absolute bottom-[35%] left-0 w-full h-[50vh] mask-rays transition-opacity duration-700 opacity-40 dark:opacity-100"
            style={{ maskImage: 'linear-gradient(to top, black 20%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to top, black 20%, transparent 100%)' }}>
         {rays.map((ray, i) => (
           <div 
             key={i}
-            className="absolute bottom-0 mix-blend-screen"
+            className="absolute bottom-0 mix-blend-multiply dark:mix-blend-screen"
             style={{
               left: ray.left,
               height: ray.height,
@@ -60,25 +60,25 @@ export function HeroBackground() {
       </div>
 
       {/* Planet Horizon Edge (Crisp curving line) */}
-      <div className="absolute top-[65%] left-1/2 -translate-x-1/2 w-[200vw] h-[100vw] rounded-[50%] bg-[#040405] shadow-[0_-20px_80px_rgba(0,0,0,0.9)]">
+      <div className="absolute top-[65%] left-1/2 -translate-x-1/2 w-[200vw] h-[100vw] rounded-[50%] bg-surface shadow-[0_-20px_80px_rgba(0,0,0,0.05)] dark:bg-[#040405] dark:shadow-[0_-20px_80px_rgba(0,0,0,0.9)] transition-colors duration-700">
         
         {/* Glowing Rim on the edge */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full rounded-[50%] border-t-[2px] border-transparent"
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full rounded-[50%] border-t-[2px] border-transparent opacity-50 dark:opacity-100 transition-opacity duration-700"
              style={{
                background: 'linear-gradient(to right, #F59E0B, #FEF3C7 50%, #3B82F6) border-box',
                WebkitMask: 'linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)',
                WebkitMaskComposite: 'xor',
                maskComposite: 'exclude',
-               boxShadow: '0 -10px 30px rgba(255,255,255,0.2)'
+               boxShadow: '0 -10px 30px rgba(0,0,0,0.1)'
              }}
         />
 
         {/* Thick glow immediately under the rim */}
-        <div className="absolute top-0 left-0 w-full h-[20px] rounded-[50%] bg-gradient-to-r from-[#F59E0B] via-[#FEF3C7] to-[#3B82F6] blur-[10px] opacity-80 mix-blend-screen" />
+        <div className="absolute top-0 left-0 w-full h-[20px] rounded-[50%] bg-gradient-to-r from-[#F59E0B] via-[#FEF3C7] to-[#3B82F6] blur-[10px] opacity-20 dark:opacity-80 mix-blend-multiply dark:mix-blend-screen transition-opacity duration-700" />
       </div>
 
       {/* Noise Texture Overlay */}
-      <div className="absolute inset-0 opacity-[0.05] mix-blend-overlay"
+      <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05] mix-blend-overlay transition-opacity duration-700"
            style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} />
     </div>
   );

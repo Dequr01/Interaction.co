@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { BadgePill } from './ui/BadgePill';
-import { GlassCard } from './ui/GlassCard';
+import { BadgePill } from '../atoms/BadgePill';
+import { GlassCard } from '../atoms/GlassCard';
 import { Target } from 'lucide-react';
 
 const values = [
@@ -45,7 +45,7 @@ const values = [
 
 export function ValuesSection() {
   return (
-    <section className="relative pb-24 md:pb-32 overflow-hidden">
+    <section className="relative pb-24 md:pb-32 overflow-hidden snap-center">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         
         {/* Header */}
