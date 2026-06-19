@@ -140,7 +140,7 @@ export function Nav() {
               {/* CTA Right */}
               <div className="pl-2 md:pl-4 pr-1 border-l border-black/5 dark:border-white/10 shrink-0">
                 <Link href="/contact">
-                  <Button variant="rainbow" size="sm" className="h-[32px] px-2.5 text-[9px] md:h-[36px] md:px-4 md:text-xs">
+                  <Button variant="rainbow" size="sm" className="h-[32px] px-2.5 text-[9px] font-bold md:h-[36px] md:px-4 md:text-xs md:font-bold">
                     Get Started
                   </Button>
                 </Link>
