@@ -25,6 +25,7 @@ const LinkedinIcon = ({ className }: { className?: string }) => (
 
 export function TeamSection() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
     <section id="team" className="relative w-full snap-start">
@@ -52,7 +53,11 @@ export function TeamSection() {
         <div className="flex-1 w-full flex flex-col md:flex-row gap-8 min-h-0">
           {/* Left Side: Images */}
           <div className="w-full md:w-1/2 h-full relative pointer-events-auto flex items-start justify-center md:justify-start">
-            <div className="h-full max-h-[500px] aspect-[4/5] max-w-full relative overflow-hidden rounded-2xl glass-card p-2 md:p-3 flex-shrink-0">
+            <div 
+              className="h-full max-h-[500px] aspect-[4/5] max-w-full relative overflow-hidden rounded-2xl glass-card p-2 md:p-3 flex-shrink-0"
+              onMouseEnter={() => setHoveredIndex(activeIndex)}
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
             <div className="relative w-full h-full rounded-xl overflow-hidden bg-black/20">
               {teamData.map((member, index) => (
                 <motion.div
@@ -61,7 +66,9 @@ export function TeamSection() {
                   initial={false}
                   animate={{ 
                     opacity: activeIndex === index ? 1 : 0,
-                    scale: activeIndex === index ? 1 : 1.1,
+                    scale: activeIndex === index 
+                      ? (hoveredIndex === index ? 1.08 : 1) 
+                      : 1.1,
                   }}
                   transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 >
@@ -112,7 +119,11 @@ export function TeamSection() {
                   viewport={{ margin: "-40% 0px -40% 0px", amount: "some" }}
                   className="w-full flex flex-col min-h-0 max-h-full"
                 >
-                  <div className="glass-card p-6 md:p-10 rounded-2xl relative overflow-hidden group flex flex-col min-h-0 max-h-full">
+                  <div 
+                    className="glass-card p-6 md:p-10 rounded-2xl relative overflow-hidden group flex flex-col min-h-0 max-h-full"
+                    onMouseEnter={() => setHoveredIndex(index)}
+                    onMouseLeave={() => setHoveredIndex(null)}
+                  >
                     <div className="absolute -inset-2 bg-gradient-to-br from-accent-blue/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-2xl pointer-events-none" />
 
                     <div className="relative z-10 flex flex-col min-h-0 max-h-full">

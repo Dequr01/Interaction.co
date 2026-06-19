@@ -10,6 +10,7 @@ import Link from 'next/link';
 
 export function WorkSection() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
     <section id="work" className="relative w-full snap-start">
@@ -42,7 +43,11 @@ export function WorkSection() {
         {/* Content Area Layout (Left Image, Right Blank Space) */}
         <div className="flex-1 w-full flex flex-col md:flex-row gap-8 min-h-0">
           {/* Left Side: Images */}
-          <div className="w-full md:w-1/2 h-full relative overflow-hidden rounded-2xl glass-card p-2 md:p-3 pointer-events-auto">
+          <div 
+            className="w-full md:w-1/2 h-full relative overflow-hidden rounded-2xl glass-card p-2 md:p-3 pointer-events-auto"
+            onMouseEnter={() => setHoveredIndex(activeIndex)}
+            onMouseLeave={() => setHoveredIndex(null)}
+          >
             <div className="relative w-full h-full rounded-xl overflow-hidden bg-surface-border">
               {projectsData.map((project, index) => (
                 <motion.div
@@ -51,7 +56,9 @@ export function WorkSection() {
                   initial={false}
                   animate={{ 
                     opacity: activeIndex === index ? 1 : 0,
-                    scale: activeIndex === index ? 1 : 1.1,
+                    scale: activeIndex === index 
+                      ? (hoveredIndex === index ? 1.08 : 1) 
+                      : 1.1,
                   }}
                   transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 >
@@ -100,7 +107,12 @@ export function WorkSection() {
                   viewport={{ margin: "-40% 0px -40% 0px", amount: "some" }}
                   className="w-full"
                 >
-                  <Link href={project.link} className="block group w-full">
+                  <Link 
+                    href={project.link} 
+                    className="block group w-full"
+                    onMouseEnter={() => setHoveredIndex(index)}
+                    onMouseLeave={() => setHoveredIndex(null)}
+                  >
                     <div className="glass-card p-6 md:p-10 rounded-2xl relative overflow-hidden transition-all duration-500 hover:border-black/10 dark:hover:border-white/20">
                       <div className="absolute -inset-2 bg-gradient-to-br from-accent-blue/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-2xl pointer-events-none" />
 
