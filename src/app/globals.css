@@ -228,6 +228,7 @@
 .light canvas,
 :root:not(.dark) canvas {
   mix-blend-mode: multiply !important;
+  opacity: 0.14 !important;
 }
 
 :root[data-theme="light"] body::before,

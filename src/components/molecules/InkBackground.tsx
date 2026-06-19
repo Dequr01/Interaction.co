@@ -48,7 +48,7 @@ export function InkBackground() {
       SUNRAYS_WEIGHT: 1.0,
       SPLAT_COLOR: dark 
         ? { r: 0.04, g: 0.04, b: 0.045 }
-        : { r: 139 / 255, g: 92 / 255, b: 246 / 255 },
+        : { r: 91 / 255, g: 60 / 255, b: 150 / 255 },
     });
 
     // Initialize fluid simulation with current theme config
