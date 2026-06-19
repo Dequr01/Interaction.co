@@ -28,7 +28,7 @@ export function Footer() {
   return (
     <footer className="border-t border-surface-border snap-end bg-black/20">
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-6 flex flex-col lg:flex-row justify-between items-center gap-6">
-        
+
         {/* Left Side: Logo & Copyright */}
         <div className="flex flex-col items-center lg:items-start gap-1 shrink-0">
           <Link href="/" className="font-display font-bold text-lg tracking-tight text-text-primary">
@@ -41,8 +41,8 @@ export function Footer() {
 
         {/* Center: Plain Text Contact Info */}
         <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 text-sm font-medium text-text-secondary">
-          <a href="mailto:hello@interaction.pk" className="hover:text-accent-blue transition-colors flex items-center gap-2">
-            <Mail className="w-4 h-4" /> hello@interaction.pk
+          <a href="mailto:interactionpvtltd@gmail.com" className="hover:text-accent-blue transition-colors flex items-center gap-2">
+            <Mail className="w-4 h-4" /> interactionpvtltd@gmail.com
           </a>
           <a href="tel:+923001234567" className="hover:text-accent-blue transition-colors flex items-center gap-2">
             <Phone className="w-4 h-4" /> +92 300 1234567
