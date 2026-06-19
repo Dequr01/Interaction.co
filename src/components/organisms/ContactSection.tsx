@@ -70,19 +70,19 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="relative w-full snap-start pt-24 pb-12 md:pt-32 md:pb-20 px-6 md:px-12 flex-1 flex flex-col justify-start min-h-0">
+    <section id="contact" className="relative w-full snap-start py-2 md:py-4 px-6 md:px-12 flex-1 flex flex-col justify-start min-h-0">
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-4 md:mb-6"
+          className="mb-2 md:mb-3"
         >
           <BadgePill>
             <MessageSquare className="w-4 h-4 text-text-secondary" />
             CONTACT
           </BadgePill>
-          <div className="mt-4 md:mt-6 relative" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
+          <div className="mt-2 md:mt-3 relative" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
             
             {/* Base Text (Invisible, provides sizing) */}
             <h2 className="font-display text-4xl md:text-5xl lg:text-[4.5rem] font-bold leading-[1.05] tracking-tight opacity-0 pointer-events-none select-none">
