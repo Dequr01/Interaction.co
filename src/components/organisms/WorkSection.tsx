@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import Image from 'next/image';
 import projectsData from '../../../data/projects.json';
 import { BadgePill } from '../atoms/BadgePill';
@@ -24,7 +24,7 @@ interface Project {
 const projects = projectsData as Project[];
 
 // ─── Entrance animation (one-shot, viewport-triggered — no race conditions) ──
-const enter = {
+const enter: Variants = {
   hidden: { opacity: 0, y: 32 },
   visible: (i: number) => ({
     opacity: 1,

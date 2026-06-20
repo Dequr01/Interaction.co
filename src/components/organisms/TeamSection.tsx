@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import Image from 'next/image';
 import teamData from '../../../data/team.json';
 import { Users, Globe } from 'lucide-react';
@@ -25,7 +25,7 @@ const LinkedinIcon = ({ className }: { className?: string }) => (
 );
 
 // ─── Entrance animation ───────────────────────────────────────────────────────
-const enter = {
+const enter: Variants = {
   hidden: { opacity: 0, y: 32 },
   visible: (i: number) => ({
     opacity: 1,
