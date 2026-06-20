@@ -76,13 +76,13 @@ export function ContactSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-4 md:mb-6"
+          className="mb-2 md:mb-3"
         >
           <BadgePill>
             <MessageSquare className="w-4 h-4 text-text-secondary" />
             CONTACT
           </BadgePill>
-          <div className="mt-4 md:mt-6 relative" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
+          <div className="mt-2 md:mt-3 relative" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
             
             {/* Base Text (Invisible, provides sizing) */}
             <h2 className="font-display text-4xl md:text-5xl lg:text-[4.5rem] font-bold leading-[1.05] tracking-tight opacity-0 pointer-events-none select-none">
@@ -133,7 +133,7 @@ export function ContactSection() {
             transition={{ delay: 0.1 }}
             className="flex-1 w-full"
           >
-            <div className="glass-card p-6 md:p-8 rounded-3xl relative overflow-hidden group h-[400px]">
+            <div className="glass-card p-6 md:p-8 rounded-3xl relative overflow-hidden group h-[520px] md:h-[430px]">
               <div className="absolute -inset-2 bg-gradient-to-br from-accent-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-2xl pointer-events-none" />
               
               <AnimatePresence mode="wait">

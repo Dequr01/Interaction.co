@@ -60,8 +60,8 @@ export function GlassSelector({
             onClick={() => onChange(opt.value)}
             onMouseEnter={() => onOptionHover?.(opt.value)}
             className={cn(
-              "relative z-10 flex-1 flex items-center justify-center gap-2 transition-colors duration-300 font-semibold tracking-tight px-4",
-              size === 'sm' ? "py-1.5 text-[10px]" : "py-2 text-sm",
+              "relative z-10 flex-1 flex items-center justify-center gap-2 transition-colors duration-300 font-semibold tracking-tight px-2.5 md:px-4",
+              size === 'sm' ? "py-1.5 text-[10px]" : "py-2 text-xs md:text-sm",
               value === opt.value
                 ? "text-white"
                 : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
