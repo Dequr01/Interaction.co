@@ -28,9 +28,9 @@ export function InkBackground() {
       VELOCITY_DISSIPATION: 2.0, // High viscosity
       PRESSURE: 0.1,
       PRESSURE_ITERATIONS: 20,
-      CURL: 2,
+      CURL: 1,
       SPLAT_RADIUS: 0.25, // Thinner stroke
-      SPLAT_FORCE: 6000,
+      SPLAT_FORCE: 7000,
       SHADING: true, // Crucial for refraction / specular highlights
       COLORFUL: false,
       COLOR_UPDATE_SPEED: 10,
@@ -40,14 +40,16 @@ export function InkBackground() {
       BLOOM: dark ? true : false,
       BLOOM_ITERATIONS: 8,
       BLOOM_RESOLUTION: 256,
-      BLOOM_INTENSITY: dark ? 0.4 : 0.0,
+      BLOOM_INTENSITY: dark ? 0.35 : 0.0,
       BLOOM_THRESHOLD: 0.8,
       BLOOM_SOFT_KNEE: 0.7,
-      SUNRAYS: false,
+      SUNRAYS: true,
       SUNRAYS_RESOLUTION: 196,
       SUNRAYS_WEIGHT: 1.0,
-      SPLAT_COLOR: dark 
-        ? { r: 0.04, g: 0.04, b: 0.045 }
+      // Ferrari red — g:0 to prevent orange cast in additive WebGL blending
+      // r pulled to 0.45 for a subtle deep crimson on dark background
+      SPLAT_COLOR: dark
+        ? { r: 0.05, g: 0.0, b: 0.0 }
         : { r: 91 / 255, g: 60 / 255, b: 150 / 255 },
     });
 
@@ -62,25 +64,37 @@ export function InkBackground() {
     const forwardEvent = (e: MouseEvent | TouchEvent, type: string) => {
       if (!canvas) return;
       if (e.target === canvas) return; // Prevent infinite loop when event bubbles back to window
-      
+
+      let clientX = lastMouseX;
+      let clientY = lastMouseY;
+
       if (e instanceof MouseEvent) {
-        lastMouseX = e.clientX;
-        lastMouseY = e.clientY;
+        clientX = e.clientX;
+        clientY = e.clientY;
+      } else if (e.type === 'touchend' && e.changedTouches && e.changedTouches.length > 0) {
+        clientX = e.changedTouches[0].clientX;
+        clientY = e.changedTouches[0].clientY;
       } else if (e.touches && e.touches.length > 0) {
-        lastMouseX = e.touches[0].clientX;
-        lastMouseY = e.touches[0].clientY;
+        clientX = e.touches[0].clientX;
+        clientY = e.touches[0].clientY;
       }
 
-      const eventCtor = e instanceof MouseEvent ? MouseEvent : TouchEvent;
-      const newEvent = new eventCtor(type, {
+      lastMouseX = clientX;
+      lastMouseY = clientY;
+
+      // Translate touch events to mouse events for the canvas.
+      // Synthesizing TouchEvents accurately is very difficult and missing properties 
+      // (like changedTouches) will crash webgl-fluid.
+      const mouseType = type
+        .replace('touchstart', 'mousedown')
+        .replace('touchmove', 'mousemove')
+        .replace('touchend', 'mouseup');
+
+      const newEvent = new MouseEvent(mouseType, {
         bubbles: true,
         cancelable: true,
-        // @ts-ignore
-        clientX: e.clientX,
-        // @ts-ignore
-        clientY: e.clientY,
-        // @ts-ignore
-        touches: e.touches,
+        clientX,
+        clientY,
       });
       canvas.dispatchEvent(newEvent);
     };
@@ -102,7 +116,7 @@ export function InkBackground() {
     // Add scroll animation to simulate fluid ripples when scrolling
     const scrollContainer = document.getElementById('main-scroll-container');
     if (!scrollContainer) return;
-    
+
     let lastScrollY = scrollContainer.scrollTop;
     const onScroll = () => {
       if (!canvas) return;
@@ -113,7 +127,7 @@ export function InkBackground() {
       if (Math.abs(deltaY) > 2) {
         // Move the fluid opposite to scroll direction
         lastMouseY -= deltaY * 1.5;
-        
+
         // Add slight horizontal wiggle to make it look like a natural current
         lastMouseX += (Math.random() - 0.5) * 40;
 
@@ -150,8 +164,8 @@ export function InkBackground() {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 z-[-50] block pointer-events-none"
-      style={{ 
-        width: '100vw', 
+      style={{
+        width: '100vw',
         height: '100vh',
         transform: 'translate3d(0, 0, 0)',
         WebkitTransform: 'translate3d(0, 0, 0)'

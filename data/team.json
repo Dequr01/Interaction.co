@@ -1,13 +1,14 @@
 [
   {
     "id": 1,
-    "name": "Taha Moazzam",
-    "designation": "Founder & COO @InteractionPVTLTD",
-    "about": "Moving Machine Learning from local instances to global impact.",
-    "photo": "/team/tahamozzam.png",
+    "name": "Esfandeyar Qureshi",
+    "designation": "CTO, CO-FOUNDER",
+    "about": "I BUILT. OBSESSED. RELENTLESS. CHASING TASKS THAT IGNITED MY CURIOSITY, UNTIL PASSION OUTRAN REASON.",
+    "photo": "/team/defey.png",
     "objectPosition": "top center",
     "links": {
-      "github": "aecotyle.github.com"
+      "website": "esfyq.vercel.app",
+      "github": "https://github.com/Dequr01"
     }
   },
   {
@@ -15,7 +16,7 @@
     "name": "Hurman Ejaz",
     "designation": "Co-Founder",
     "about": "I build things that move. The cursor. The screen. The person watching. Motion isn't decoration — it's the message.",
-    "photo": "/team/hurmanejaz.png ",
+    "photo": "/team/hurmanejaz.png",
     "objectPosition": "top center",
     "links": {
       "website": "https://project-ignition-two.vercel.app/"
@@ -23,17 +24,28 @@
   },
   {
     "id": 3,
-    "name": "Esfandeyar Qureshi",
-    "designation": "CTO, CO-FOUNDER",
-    "about": "I architect the chaos. The spark. The flame. The wildfire. A brand isn't just a logo — it's an undeniable force.",
-    "photo": "/team/defey.png",
+    "name": "Hamiz Safdar",
+    "designation": "CEO & Co-Founder",
+    "about": "I don't manage companies. I build them. Vision without execution is noise — I turn the signal into structure.",
+    "photo": "/team/image.png",
     "objectPosition": "top center",
     "links": {
-      "website": "esfyq.vercel.app"
+      "linkedin": "https://www.linkedin.com/in/muhammad-hamiz-74b353360"
     }
   },
   {
     "id": 4,
+    "name": "Mounim Ijaz",
+    "designation": "Co-Founder & CMO",
+    "about": "I engineer perception. The narrative. The market. The human mind. Attention isn't asked for — it's commanded.",
+    "photo": "/team/image copy.png",
+    "objectPosition": "center center",
+    "links": {
+      "linkedin": "https://www.linkedin.com/in/mounimijaz/"
+    }
+  },
+  {
+    "id": 5,
     "name": "Ali Sarfraz",
     "designation": "CIO & Co-Founder",
     "about": "",
@@ -44,25 +56,14 @@
     }
   },
   {
-    "id": 5,
-    "name": "Hamiz Safdar",
-    "designation": "CEO & Co-Founder",
-    "about": "",
-    "photo": "/team/image.png",
+    "id": 6,
+    "name": "Taha Moazzam",
+    "designation": "Founder & COO @InteractionPVTLTD",
+    "about": "Moving Machine Learning from local instances to global impact.",
+    "photo": "/team/tahamozzam.png",
     "objectPosition": "top center",
     "links": {
-      "linkedin": "https://www.linkedin.com/in/muhammad-hamiz-74b353360"
-    }
-  },
-  {
-    "id": 6,
-    "name": "Mounim Ijaz",
-    "designation": "Co-Founder & CMO",
-    "about": "I engineer perception. The narrative. The market. The human mind. Attention isn't asked for — it's commanded.",
-    "photo": "/team/image copy.png",
-    "objectPosition": "center center",
-    "links": {
-      "linkedin": "https://www.linkedin.com/in/mounimijaz/"
+      "github": "aecotyle.github.com"
     }
   }
 ]

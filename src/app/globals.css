@@ -27,6 +27,12 @@
     --theme-text-primary: #111111;
     --theme-text-secondary: #555555;
     --theme-text-muted: #888888;
+
+    /* GlassCard accent tokens — light mode */
+    --accent:        #3B82F6;
+    --accent-glow:   rgba(59, 130, 246, 0.25);
+    --border-accent: rgba(59, 130, 246, 0.35);
+    --glow-sm:       0 0 16px rgba(59, 130, 246, 0.25);
   }
   .dark {
       --theme-bg: #040405;
@@ -35,6 +41,12 @@
       --theme-text-primary: #FAFAFA;
       --theme-text-secondary: #B4B4B8;
       --theme-text-muted: #7A7A80;
+
+      /* GlassCard accent tokens — dark mode */
+      --accent:        #60A5FA;
+      --accent-glow:   rgba(96, 165, 250, 0.20);
+      --border-accent: rgba(96, 165, 250, 0.30);
+      --glow-sm:       0 0 20px rgba(96, 165, 250, 0.20);
     }
   * {
     box-sizing: border-box;
@@ -47,7 +59,8 @@
 
   #main-scroll-container {
     scroll-behavior: smooth;
-    scroll-snap-type: y mandatory;
+    /* Reserve space for the fixed nav so hash links don't go underneath it */
+    scroll-padding-top: 80px;
   }
 
   ::-webkit-scrollbar {
@@ -118,6 +131,21 @@
   }
 
   .dark .glass-card {
+    background: rgba(4, 4, 5, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  }
+
+  /* GlassCard component — identical base appearance to .glass-card */
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(32px) saturate(150%);
+    -webkit-backdrop-filter: blur(32px) saturate(150%);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+  }
+
+  .dark .glass-panel {
     background: rgba(4, 4, 5, 0.6);
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);

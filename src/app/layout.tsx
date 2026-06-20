@@ -4,6 +4,7 @@ import './globals.css';
 import { InkBackground } from '@/components/molecules/InkBackground';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import { ThemeToggle } from '@/components/molecules/ThemeToggle';
+import { HashReset } from '@/components/providers/HashReset';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -31,6 +32,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${interTight.variable} font-sans text-text-primary antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <HashReset />
           <InkBackground />
           <ThemeToggle />
           <div id="main-scroll-container" className="h-screen w-full overflow-y-auto overflow-x-hidden relative z-0">

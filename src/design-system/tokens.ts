@@ -26,3 +26,7 @@ export const tokens = {
     dropdown: 'bg-black/60 border border-white/10 backdrop-blur-2xl',
   }
 };
+
+// Named exports consumed by GlassCard (and any future component)
+export const spacing = tokens.spacing;
+export const radius  = tokens.borderRadius;

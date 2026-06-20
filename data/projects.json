@@ -4,27 +4,59 @@
     "title": "Astra Logistics",
     "category": "AI Automation",
     "image": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2670&auto=format&fit=crop",
-    "link": "#"
+    "link": "#",
+    "year": "2024",
+    "description": "End-to-end AI-powered automation of Astra's global logistics chain — from demand forecasting to last-mile routing. Reduced manual dispatch overhead by 74% and cut average delivery estimation error to under 3%.",
+    "tags": ["Python", "LangChain", "FastAPI", "PostgreSQL", "React"],
+    "outcomes": [
+      { "label": "Dispatch time", "value": "−74%" },
+      { "label": "Route accuracy", "value": "97.2%" },
+      { "label": "Cost savings", "value": "$2.4M/yr" }
+    ]
   },
   {
     "id": "p2",
     "title": "Nebula FinTech",
     "category": "Fraud Detection System",
     "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop",
-    "link": "#"
+    "link": "#",
+    "year": "2023",
+    "description": "Real-time fraud detection pipeline processing 2.7M transactions per second. Built a graph-ML model that flags anomalous behaviour 340ms before settlement, integrated directly into Nebula's core banking infrastructure.",
+    "tags": ["PyTorch", "Apache Kafka", "Go", "Neo4j", "Kubernetes"],
+    "outcomes": [
+      { "label": "Transactions/sec", "value": "2.7M" },
+      { "label": "Detection latency", "value": "340ms" },
+      { "label": "False positives", "value": "−89%" }
+    ]
   },
   {
     "id": "p3",
     "title": "Quantum Healthcare",
     "category": "Patient Triage Agent",
     "image": "https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=2670&auto=format&fit=crop",
-    "link": "#"
+    "link": "#",
+    "year": "2024",
+    "description": "AI triage agent that triages and prioritises ER patients based on vitals, history, and symptom NLP. Deployed across 12 hospital sites, reducing critical wait times by 41% while maintaining strict HIPAA compliance.",
+    "tags": ["Next.js", "GPT-4o", "Terraform", "HL7 FHIR", "AWS"],
+    "outcomes": [
+      { "label": "Wait time", "value": "−41%" },
+      { "label": "Sites deployed", "value": "12" },
+      { "label": "Accuracy", "value": "94.8%" }
+    ]
   },
   {
     "id": "p4",
     "title": "Nova Retail",
     "category": "Dynamic Pricing Engine",
     "image": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=2670&auto=format&fit=crop",
-    "link": "#"
+    "link": "#",
+    "year": "2023",
+    "description": "ML-driven pricing engine that reacts to competitor prices, inventory levels, and demand signals in real time across Nova's 80,000+ SKU catalogue. Delivered a 19% gross margin uplift in the first quarter post-launch.",
+    "tags": ["Spark", "Scikit-learn", "Node.js", "Redis", "GCP"],
+    "outcomes": [
+      { "label": "SKUs managed", "value": "80K+" },
+      { "label": "Margin uplift", "value": "+19%" },
+      { "label": "Price refresh", "value": "< 2min" }
+    ]
   }
 ]

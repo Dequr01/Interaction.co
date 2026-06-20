@@ -45,7 +45,7 @@ const values = [
 
 export function ValuesSection() {
   return (
-    <section className="relative pb-24 md:pb-32 overflow-hidden snap-center">
+    <section className="relative pb-24 md:pb-32 overflow-hidden snap-start">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         
         {/* Header */}
