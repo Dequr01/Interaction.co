@@ -3,6 +3,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '../atoms/Button';
+import { Magnetic } from '../atoms/Magnetic';
+import { TiltCard } from '../atoms/TiltCard';
 
 const SERVICES = [
   {
@@ -117,15 +119,17 @@ export const ServicesSection = () => {
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: i * 0.1, ease: "easeOut" }}
-              className="group relative p-8 cursor-default transition-all duration-300 glass-card rounded-2xl"
+              className="h-full w-full rounded-2xl"
             >
-              {/* Hover gradient overlay */}
-              <div
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
-                style={{ background: 'var(--color-accent-soft)' }}
-              />
+              <TiltCard maxTilt={15} className="h-full rounded-2xl">
+                <div className="group relative p-8 cursor-default transition-all duration-300 glass-card rounded-2xl h-full">
+                  {/* Hover gradient overlay */}
+                  <div
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
+                    style={{ background: 'var(--color-accent-soft)' }}
+                  />
 
-              <div className="relative">
+                  <div className="relative">
                 <div className="flex items-start justify-between mb-6">
                   <div
                     className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110"
@@ -168,7 +172,9 @@ export const ServicesSection = () => {
                     </span>
                   ))}
                 </div>
-              </div>
+                  </div>
+                </div>
+              </TiltCard>
             </motion.div>
           ))}
         </div>
@@ -185,9 +191,11 @@ export const ServicesSection = () => {
               We adapt to whatever your project demands.
             </p>
           </div>
-          <Button variant="primary" size="md">
-            Let's talk →
-          </Button>
+          <Magnetic>
+            <Button variant="primary" size="md">
+              Let's talk →
+            </Button>
+          </Magnetic>
         </div>
       </div>
     </section>

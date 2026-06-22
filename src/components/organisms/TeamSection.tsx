@@ -8,6 +8,7 @@ import { Users, Globe } from 'lucide-react';
 import Link from 'next/link';
 import { BadgePill } from '../atoms/BadgePill';
 import { TeamModal } from '../molecules/TeamModal';
+import { TiltCard } from '../atoms/TiltCard';
 
 // ─── Icon components ─────────────────────────────────────────────────────────
 const GithubIcon = ({ className }: { className?: string }) => (
@@ -50,112 +51,114 @@ function TeamCard({ member, index, onOpen }: { member: typeof teamData[0]; index
   const hasLinks = member.links.github || member.links.linkedin || member.links.website;
 
   return (
-    <motion.button
-      onClick={onOpen}
-      custom={index}
-      variants={enter}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.15 }}
-      className="group relative rounded-2xl overflow-hidden glass-card text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-blue
-                 w-full aspect-[3/4]
-                 transition-[border-color,box-shadow] duration-700
-                 hover:border-black/15 dark:hover:border-white/20
-                 hover:shadow-[0_12px_48px_rgba(0,0,0,0.15)] dark:hover:shadow-[0_12px_48px_rgba(0,0,0,0.55)]"
-    >
-      {/* ── 1. Portrait photo ── */}
-      <Image
-        src={member.photo.trim()}
-        alt={member.name}
-        fill
-        sizes="(max-width:640px) 50vw, (max-width:1024px) 33vw, 25vw"
-        className="object-cover object-top
-                   transition-[transform,filter] duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]
-                   group-hover:scale-[1.1] group-hover:blur-[4px]"
-      />
+    <TiltCard className="w-full aspect-[3/4] rounded-2xl" maxTilt={12}>
+      <motion.button
+        onClick={onOpen}
+        custom={index}
+        variants={enter}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.15 }}
+        className="group relative rounded-2xl overflow-hidden glass-card text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-blue
+                   w-full h-full
+                   transition-[border-color,box-shadow] duration-700
+                   hover:border-black/15 dark:hover:border-white/20
+                   hover:shadow-[0_12px_48px_rgba(0,0,0,0.15)] dark:hover:shadow-[0_12px_48px_rgba(0,0,0,0.55)]"
+      >
+        {/* ── 1. Portrait photo ── */}
+        <Image
+          src={member.photo.trim()}
+          alt={member.name}
+          fill
+          sizes="(max-width:640px) 50vw, (max-width:1024px) 33vw, 25vw"
+          className="object-cover object-top
+                     transition-[transform,filter] duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]
+                     group-hover:scale-[1.1] group-hover:blur-[4px]"
+        />
 
-      {/* ── 2. Ambient gradient (resting) ── */}
-      <div className="absolute inset-0 bg-gradient-to-t
-                      from-black/90 via-black/20 to-transparent
-                      transition-opacity duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]
-                      group-hover:opacity-0 z-0" />
+        {/* ── 2. Ambient gradient (resting) ── */}
+        <div className="absolute inset-0 bg-gradient-to-t
+                        from-black/90 via-black/20 to-transparent
+                        transition-opacity duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]
+                        group-hover:opacity-0 z-0" />
 
-      {/* ── 3. Hover Overlay (blur & darken) ── */}
-      <div className="absolute inset-0 bg-black/70 backdrop-blur-md
-                      opacity-0 group-hover:opacity-100
-                      transition-opacity duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] z-0" />
-
-      {/* ── 4. Content Container (slides up automatically as max-height expands) ── */}
-      <div className="absolute inset-x-0 bottom-0 p-5 flex flex-col justify-end z-10">
-        
-        {/* Name & Designation (Always visible, shifts up) */}
-        <div className="transform transition-transform duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-1">
-          <p className="text-[0.65rem] font-mono font-bold tracking-widest uppercase text-accent-blue mb-1 line-clamp-1
-                        transition-colors duration-1000 group-hover:text-accent-blue/90">
-            {member.designation}
-          </p>
-          <h3 className="font-display font-bold text-white text-xl md:text-2xl leading-tight">
-            {member.name}
-          </h3>
-        </div>
-
-        {/* Expandable details (Bio & Links) */}
-        <div className="overflow-hidden
-                        max-h-0 group-hover:max-h-[250px]
+        {/* ── 3. Hover Overlay (blur & darken) ── */}
+        <div className="absolute inset-0 bg-black/70 backdrop-blur-md
                         opacity-0 group-hover:opacity-100
-                        transition-[max-height,opacity] duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]">
-          <div className="pt-3">
-            {member.about && (
-              <p className="text-[0.8rem] text-white/80 leading-relaxed line-clamp-4 mb-4 font-light">
-                {member.about}
-              </p>
-            )}
+                        transition-opacity duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] z-0" />
 
-            {/* Social links */}
-            {hasLinks && (
-              <div className="flex gap-2">
-                {member.links.github && (
-                  <Link
-                    href={`https://${member.links.github.replace('https://', '')}`}
-                    target="_blank"
-                    onClick={e => e.stopPropagation()}
-                    className="w-8 h-8 rounded-full bg-white/10 border border-white/15
-                               flex items-center justify-center
-                               hover:bg-white/25 transition-colors duration-300"
-                  >
-                    <GithubIcon className="w-3.5 h-3.5 text-white/90" />
-                  </Link>
-                )}
-                {member.links.linkedin && (
-                  <Link
-                    href={member.links.linkedin}
-                    target="_blank"
-                    onClick={e => e.stopPropagation()}
-                    className="w-8 h-8 rounded-full bg-white/10 border border-white/15
-                               flex items-center justify-center
-                               hover:bg-white/25 transition-colors duration-300"
-                  >
-                    <LinkedinIcon className="w-3.5 h-3.5 text-white/90" />
-                  </Link>
-                )}
-                {member.links.website && (
-                  <Link
-                    href={member.links.website.startsWith('http') ? member.links.website : `https://${member.links.website}`}
-                    target="_blank"
-                    onClick={e => e.stopPropagation()}
-                    className="w-8 h-8 rounded-full bg-white/10 border border-white/15
-                               flex items-center justify-center
-                               hover:bg-white/25 transition-colors duration-300"
-                  >
-                    <Globe className="w-3.5 h-3.5 text-white/90" />
-                  </Link>
-                )}
-              </div>
-            )}
+        {/* ── 4. Content Container (slides up automatically as max-height expands) ── */}
+        <div className="absolute inset-x-0 bottom-0 p-5 flex flex-col justify-end z-10">
+          
+          {/* Name & Designation (Always visible, shifts up) */}
+          <div className="transform transition-transform duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-1">
+            <p className="text-[0.65rem] font-mono font-bold tracking-widest uppercase text-accent-blue mb-1 line-clamp-1
+                          transition-colors duration-1000 group-hover:text-accent-blue/90">
+              {member.designation}
+            </p>
+            <h3 className="font-display font-bold text-white text-xl md:text-2xl leading-tight">
+              {member.name}
+            </h3>
+          </div>
+
+          {/* Expandable details (Bio & Links) */}
+          <div className="overflow-hidden
+                          max-h-0 group-hover:max-h-[250px]
+                          opacity-0 group-hover:opacity-100
+                          transition-[max-height,opacity] duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]">
+            <div className="pt-3">
+              {member.about && (
+                <p className="text-[0.8rem] text-white/80 leading-relaxed line-clamp-4 mb-4 font-light">
+                  {member.about}
+                </p>
+              )}
+
+              {/* Social links */}
+              {hasLinks && (
+                <div className="flex gap-2">
+                  {member.links.github && (
+                    <Link
+                      href={`https://${member.links.github.replace('https://', '')}`}
+                      target="_blank"
+                      onClick={e => e.stopPropagation()}
+                      className="w-8 h-8 rounded-full bg-white/10 border border-white/15
+                                 flex items-center justify-center
+                                 hover:bg-white/25 transition-colors duration-300"
+                    >
+                      <GithubIcon className="w-3.5 h-3.5 text-white/90" />
+                    </Link>
+                  )}
+                  {member.links.linkedin && (
+                    <Link
+                      href={member.links.linkedin}
+                      target="_blank"
+                      onClick={e => e.stopPropagation()}
+                      className="w-8 h-8 rounded-full bg-white/10 border border-white/15
+                                 flex items-center justify-center
+                                 hover:bg-white/25 transition-colors duration-300"
+                    >
+                      <LinkedinIcon className="w-3.5 h-3.5 text-white/90" />
+                    </Link>
+                  )}
+                  {member.links.website && (
+                    <Link
+                      href={member.links.website.startsWith('http') ? member.links.website : `https://${member.links.website}`}
+                      target="_blank"
+                      onClick={e => e.stopPropagation()}
+                      className="w-8 h-8 rounded-full bg-white/10 border border-white/15
+                                 flex items-center justify-center
+                                 hover:bg-white/25 transition-colors duration-300"
+                    >
+                      <Globe className="w-3.5 h-3.5 text-white/90" />
+                    </Link>
+                  )}
+                </div>
+              )}
+            </div>
           </div>
         </div>
-      </div>
-    </motion.button>
+      </motion.button>
+    </TiltCard>
   );
 }
 

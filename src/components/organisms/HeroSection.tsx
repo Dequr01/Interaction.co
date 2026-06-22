@@ -139,28 +139,6 @@ export function HeroSection() {
         </motion.p>
       </div>
 
-      {/* Side Subtle Beta Badge with Glare */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        whileHover={{ scale: 1.02 }}
-        transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute bottom-8 left-8 md:bottom-12 md:left-12 z-50 cursor-pointer"
-      >
-        <div className="relative overflow-hidden rounded-full group">
-          <BadgePill>
-            <span className="w-2 h-2 rounded-full bg-accent-blue inline-block shadow-[0_0_8px_var(--color-accent-blue)]" />
-            Beta Version is launching on 12th September
-          </BadgePill>
-          
-          {/* Glare Animation */}
-          <motion.div
-            animate={{ left: ['-100%', '200%'] }}
-            transition={{ repeat: Infinity, duration: 4.5, repeatDelay: 3, ease: 'easeInOut' }}
-            className="absolute top-0 bottom-0 w-[50%] bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-[-20deg] z-10 pointer-events-none"
-          />
-        </div>
-      </motion.div>
     </section>
   );
 }

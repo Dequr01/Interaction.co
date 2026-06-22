@@ -15,11 +15,13 @@
     "id": 2,
     "name": "Hurman Ejaz",
     "designation": "Co-Founder",
-    "about": "I build things that move. The cursor. The screen. The person watching. Motion isn't decoration 7 89it's the message.",
+    "about": "I build things that move. The cursor. The screen. The person watching. Motion isn't decoration it's the message.",
     "photo": "/team/hurmanejaz.png",
     "objectPosition": "top center",
     "links": {
-      "website": "https://project-ignition-two.vercel.app/"
+      "website": "https://project-ignition-two.vercel.app/",
+      "linkedin": "https://www.linkedin.com/in/hurman-ejaz-4946a8337/",
+      "github": "https://github.com/hurman11"
     }
   },
   {
@@ -48,7 +50,7 @@
     "id": 5,
     "name": "Ali Sarfraz",
     "designation": "CIO & Co-Founder",
-    "about": "",
+    "about": "I architect the chaos.The spark. The flame. The wildfire.A brand isn't just a logo — it's an undeniable force.",
     "photo": "/team/alisarfaraz.png",
     "objectPosition": "top center",
     "links": {
