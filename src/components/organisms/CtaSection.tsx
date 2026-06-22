@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { Button } from '../atoms/Button';
+import { Magnetic } from '../atoms/Magnetic';
 
 export function CtaSection() {
   return (
@@ -54,9 +55,11 @@ export function CtaSection() {
           
           <div className="mt-10 relative z-10">
             <Link href="/contact">
-              <Button variant="primary" size="lg">
-                Contact Us
-              </Button>
+              <Magnetic>
+                <Button variant="rainbow" size="lg">
+                  Contact Us
+                </Button>
+              </Magnetic>
             </Link>
           </div>
         </div>

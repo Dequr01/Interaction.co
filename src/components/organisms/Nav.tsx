@@ -7,6 +7,7 @@ import { motion, AnimatePresence, useMotionValue, useMotionTemplate } from 'fram
 import { Button } from '../atoms/Button';
 import { GlassSelector } from '../atoms/GlassSelector';
 import { ChevronDown } from 'lucide-react';
+import { Magnetic } from '../atoms/Magnetic';
 
 export function Nav() {
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
@@ -144,9 +145,11 @@ export function Nav() {
               </div>
               <div className="pl-4 pr-1 border-l border-black/5 dark:border-white/10 shrink-0">
                 <Link href="/contact">
-                  <Button variant="rainbow" size="sm" className="h-[36px] px-4 text-xs font-bold">
-                    Get Started
-                  </Button>
+                  <Magnetic>
+                    <Button variant="rainbow" size="sm" className="h-[36px] px-4 text-xs font-bold">
+                      Get Started
+                    </Button>
+                  </Magnetic>
                 </Link>
               </div>
             </motion.div>

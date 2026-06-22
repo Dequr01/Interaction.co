@@ -8,7 +8,6 @@ export default function ContactPage() {
     <main className="h-[100dvh] overflow-hidden relative flex flex-col selection:bg-accent-blue/30 pt-20 pb-0">
       <Nav />
       <ContactSection />
-      <div className="flex-1" />
       <Footer />
     </main>
   );

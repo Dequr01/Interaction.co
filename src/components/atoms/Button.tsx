@@ -15,7 +15,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 
 const variants = {
   primary:   'bg-white text-black font-mono text-[0.8rem] tracking-[0.1em] uppercase font-bold border-none relative overflow-hidden group/btn hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:-translate-y-px transition-all duration-300',
-  secondary: 'bg-transparent text-text-primary font-mono text-[0.8rem] tracking-[0.1em] uppercase border border-white/20 relative overflow-hidden group/btn hover:border-white/40 hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] transition-all duration-300',
+  secondary: 'bg-white/5 backdrop-blur-xl text-text-primary font-mono text-[0.8rem] tracking-[0.1em] uppercase border border-black/10 dark:border-white/10 relative overflow-hidden group/btn hover:bg-white/10 hover:border-black/20 dark:hover:border-white/20 hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] transition-all duration-300',
   info:      'bg-accent-blue text-white shadow-sm border-none relative overflow-hidden group/btn',
   ghost:     'bg-transparent text-text-primary relative overflow-hidden group/btn hover:bg-white/5 transition-colors',
   danger:    'bg-red-500 text-white shadow-sm border-none relative overflow-hidden group/btn',
